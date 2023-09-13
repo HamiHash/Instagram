@@ -9,7 +9,29 @@ import SwiftUI
 
 struct TabBar: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            FeedView()
+                .tabItem {
+                    Image(systemName: "house")
+                }
+            Text("Search")
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                }
+            Text("Upload Post")
+                .tabItem {
+                    Image(systemName: "plus.square")
+                }
+            Text("Notifications")
+                .tabItem {
+                    Image(systemName: "heart")
+                }
+            ProfileView()
+                .tabItem {
+                    Image(systemName: "person")
+                }
+        }
+        .tint(.black)
     }
 }
 
