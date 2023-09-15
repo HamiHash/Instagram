@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct FeedCell: View {
+    let post: Post
+    
     var body: some View {
         VStack(spacing: 4) {
             // pic and username
             HStack {
-                Image("Roman")
+                Image(post.user!.profileImageUrl ?? "")
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: 35)
+                    .scaledToFill()
+                    .frame(width: 35, height: 35)
                     .clipShape(Circle())
                 
-                Text("Roman")
+                Text(post.user!.username)
                     .font(.footnote)
                     .fontWeight(.semibold)
                 
@@ -27,9 +29,9 @@ struct FeedCell: View {
             .padding(.leading, 10)
             
             // post
-            Image("Roman")
+            Image(post.imageUrl)
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
             
             // buttons
             HStack(spacing: 16) {
@@ -63,14 +65,15 @@ struct FeedCell: View {
             
             // username and caption
             HStack {
-                Text("Roman ").fontWeight(.semibold) + Text("hey asdhg asdflasdfh ldf dshf jhdfkjhadgfnwrgherhgasdghs jdfdfj how are you doing today sir i hope youre having a great time with your stay")
+                Text("\(post.user!.username) ").fontWeight(.semibold) + Text("\(post.caption)")
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             .font(.footnote)
             .padding(.leading, 10)
             
             // date
             HStack {
-                Text("5 hours ago")
+                Text("\(post.timestamp)")
                     .font(.caption)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading, 10)
@@ -82,6 +85,6 @@ struct FeedCell: View {
 
 struct FeedCell_Previews: PreviewProvider {
     static var previews: some View {
-        FeedCell()
+        FeedCell(post: Post.MOCK_POSTS[10])
     }
 }

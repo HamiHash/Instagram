@@ -26,7 +26,7 @@ struct TabBar: View {
                 .tabItem {
                     Image(systemName: "heart")
                 }
-            ProfileView()
+            SelfProfileView(user: User.MOCK_USERS[0])
                 .tabItem {
                     Image(systemName: "person")
                 }

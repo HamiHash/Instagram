@@ -14,26 +14,34 @@ struct SearchView: View {
         NavigationStack {
             ScrollView {
                 LazyVStack(spacing: 10) {
-                    ForEach(0...8, id: \.self) { user in
-                        HStack {
-                            Image("Roman")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 45)
-                                .clipShape(Circle())
-                            
-                            VStack(alignment: .leading) {
-                                Text("roman")
-                                    .font(.footnote)
-                                    .fontWeight(.bold)
+                    ForEach(User.MOCK_USERS) { user in
+                        NavigationLink(value: user) {
+                            HStack {
+                                Image(user.profileImageUrl ?? "")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 45, height: 45)
+                                    .clipShape(Circle())
                                 
-                                Text("Roman Roy")
-                                    .font(.caption2)
+                                VStack(alignment: .leading) {
+                                    Text(user.username)
+                                        .font(.footnote)
+                                        .fontWeight(.bold)
+                                    
+                                    if let name = user.fullname {
+                                        Text(name)
+                                            .font(.caption2)
+                                    }
+                                }
+                                
+                                Spacer()
                             }
-                            
-                            Spacer()
+                            .foregroundColor(.black)
+                            .padding(.leading)
                         }
-                        .padding(.leading)
+                        .navigationDestination(for: User.self) { user in
+                            ProfileView(user: user)
+                        }
                     }
                 }
             }
