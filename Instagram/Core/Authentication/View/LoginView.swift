@@ -45,7 +45,9 @@ struct LoginView: View {
                 
                 
                 Button {
-                    
+                    Task {
+                        try await login()
+                    }
                 } label: {
                     Text("Login")
                         .modifier(BlueButtonModifier())
@@ -56,7 +58,7 @@ struct LoginView: View {
                 
                 // Sign Up
                 NavigationLink {
-                    AddEmailView()
+                    InsertEmailView()
                 } label: {
                     HStack {
                         Text("Don't have an account? ") + Text("Sign Up").fontWeight(.bold)
@@ -70,6 +72,11 @@ struct LoginView: View {
     }
 }
 
+extension LoginView {
+    func login() async throws {
+        try await AuthService.shared.login(withEmail: email, password: password)
+    }
+}
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {

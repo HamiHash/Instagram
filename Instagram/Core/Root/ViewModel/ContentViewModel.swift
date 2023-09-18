@@ -20,6 +20,7 @@ class ContentViewModel: ObservableObject {
         setupSubscribers()
     }
     
+    // this listens for changes in userSession and with .sink we set the new value to userSession.
     func setupSubscribers() {
         service.$userSession.sink { [weak self] userSession in
             self?.userSession = userSession

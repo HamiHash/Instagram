@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct CreateUsernameView: View {
-    @State private var username = ""
+struct InsertUsernameView: View {
+    @EnvironmentObject var regViewModel: RegistrationViewModel
     
     var body: some View {
         VStack(spacing: 15) {
-            SignUpExtractedView(textInput: $username, placeHolder: "Username", title: "Add your username", description: "This will be showed to everyone.")
+            SignUpExtractedView(textInput: $regViewModel.username, placeHolder: "Username", title: "Add your username", description: "This will be showed to everyone.")
             
             NavigationLink {
-                CreatePasswordView()
+                InsertPasswordView()
             } label: {
-                Text("Confirm")
+                Text("Next")
                     .modifier(BlueButtonModifier())
             }
             
@@ -29,6 +29,6 @@ struct CreateUsernameView: View {
 
 struct CreateUsernameView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateUsernameView()
+        InsertUsernameView()
     }
 }

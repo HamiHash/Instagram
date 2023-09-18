@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct AddEmailView: View {
-    @State private var email = ""
+struct InsertEmailView: View {
+    @EnvironmentObject var regViewModel: RegistrationViewModel
     
     var body: some View {
         VStack(spacing: 15) {
-            SignUpExtractedView(textInput: $email, placeHolder: "Email", title: "Add your Email", description: "You'll use this email to sign in to your account")
+            SignUpExtractedView(textInput: $regViewModel.email, placeHolder: "Email", title: "Add your Email", description: "You'll use this email to sign in to your account")
             
             NavigationLink {
-                CreateUsernameView()
+                InsertUsernameView()
             } label: {
                 Text("Next")
                     .modifier(BlueButtonModifier())
@@ -29,6 +29,6 @@ struct AddEmailView: View {
 
 struct AddEmailView_Previews: PreviewProvider {
     static var previews: some View {
-        AddEmailView()
+        InsertEmailView()
     }
 }

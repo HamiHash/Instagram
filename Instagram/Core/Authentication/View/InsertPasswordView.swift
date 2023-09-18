@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct CreatePasswordView: View {
-    @State private var password = ""
+struct InsertPasswordView: View {
+    @EnvironmentObject var regViewModel: RegistrationViewModel
     
     var body: some View {
         VStack(spacing: 15) {
-            SignUpExtractedView(textInput: $password, placeHolder: "Password", title: "Create Password", description: "Your password must be at least 6 characters long")
+            SignUpExtractedView(textInput: $regViewModel.password, placeHolder: "Password", title: "Create Password", description: "Your password must be at least 6 characters long")
             
             NavigationLink {
                 CompleteSignUpView()
             } label: {
-                Text("Done")
+                Text("Next")
                     .modifier(BlueButtonModifier())
             }
             
@@ -28,6 +28,6 @@ struct CreatePasswordView: View {
 
 struct CreatePasswordView_Preview: PreviewProvider {
     static var previews: some View {
-        CreatePasswordView()
+        InsertPasswordView()
     }
 }
