@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginView: View {
     @State private var email: String = ""
     @State private var password: String = ""
+    @EnvironmentObject var regViewModel: RegistrationViewModel // for clearing registeration inputs on apear.
     
     var body: some View {
         NavigationStack {
@@ -67,6 +68,11 @@ struct LoginView: View {
                     .foregroundColor(Color(.systemBlue))
                     .padding(.bottom, 10)
                 }
+            }
+            .onAppear { // clear inputs
+                regViewModel.email = ""
+                regViewModel.password = ""
+                regViewModel.username = ""
             }
         }
     }

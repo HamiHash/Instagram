@@ -14,11 +14,12 @@ import FirebaseFirestoreSwift
 class AuthService {
     
     @Published var userSession: FirebaseAuth.User?
+    @Published var currentUser: User?
     
     static let shared = AuthService()
     
     init() {
-        self.userSession = Auth.auth().currentUser
+        Task { try await loadUserData() }
     }
     
     @MainActor
@@ -26,6 +27,8 @@ class AuthService {
         do {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
             self.userSession = result.user
+            // Reseting the currentUser
+            try await loadUserData()
         } catch let error as NSError {
             print("DEBUG: failed to login user with: \(error.localizedDescription) error: \(error.underlyingErrors.debugDescription)")
         }
@@ -36,16 +39,24 @@ class AuthService {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             self.userSession = result.user
-            print("DEBUG: Did create user in firebase.")
             await uploadUserData(uid: result.user.uid, username: username, email: email)
-            print("DEBUG: Did upload user data.")
         } catch let error as NSError {
             print("DEBUG: failed to register user with: \(error.localizedDescription) error: \(error.underlyingErrors.debugDescription)")
         }
     }
     
+    @MainActor
     func loadUserData() async throws {
-        
+        // setting the user session
+        self.userSession = Auth.auth().currentUser
+        // get the current user id (to access the document in the 'users' colection)
+        print("1. DEBUG: Before currentUid")
+        guard let currentUid = userSession?.uid else { return }
+        // get document from Firebase
+        let snapshot = try await Firestore.firestore().collection("users").document(currentUid).getDocument()
+        print("2. DEBUG: Snapshot data is \(snapshot.data()!)")
+        // encoding the user data from Firebase, to a User model
+        currentUser = try? snapshot.data(as: User.self)
     }
     
     func signout() {
@@ -56,6 +67,8 @@ class AuthService {
     private func uploadUserData(uid: String, username: String, email: String) async {
         // Creating User
         let user = User(id: uid, username: username, email: email)
+        // Setting currentUser to the one that just created
+        self.currentUser = user
         // Encode (documentData type)
         guard let encodedUser = try? Firestore.Encoder().encode(user) else { fatalError("Could'nt encode user data") }
         // Save User to firestore
