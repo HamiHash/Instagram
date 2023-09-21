@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		FF2C37CD2AB070C900F2A110 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C37CC2AB070C900F2A110 /* FeedView.swift */; };
 		FF2C37CF2AB070D400F2A110 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C37CE2AB070D400F2A110 /* FeedCell.swift */; };
+		FF2CA85A2ABCE21500356F80 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CA8592ABCE21500356F80 /* UserService.swift */; };
+		FF2CA85E2ABCE44A00356F80 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CA85D2ABCE44A00356F80 /* SearchViewModel.swift */; };
 		FF38CC532AB62D94005DE88E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FF38CC522AB62D94005DE88E /* FirebaseAuth */; };
 		FF38CC552AB62D94005DE88E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FF38CC542AB62D94005DE88E /* FirebaseFirestore */; };
 		FF38CC572AB62D94005DE88E /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FF38CC562AB62D94005DE88E /* FirebaseFirestoreSwift */; };
@@ -45,6 +47,8 @@
 /* Begin PBXFileReference section */
 		FF2C37CC2AB070C900F2A110 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		FF2C37CE2AB070D400F2A110 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		FF2CA8592ABCE21500356F80 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		FF2CA85D2ABCE44A00356F80 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		FF60E2D42AB3AAEC0084E129 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FF6FC3442AB272C400C78F42 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FF6FC3462AB36D0400C78F42 /* InsertEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertEmailView.swift; sourceTree = "<group>"; };
@@ -90,6 +94,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF2CA85B2ABCE41D00356F80 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FFBA03272AB21CE000D3D79C /* SearchView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FF2CA85C2ABCE42400356F80 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FF2CA85D2ABCE44A00356F80 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		FFA6FF8B2AAF59F800561FEE = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +191,7 @@
 		FFA6FFA92AAF5AB900561FEE /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				FF2CA8592ABCE21500356F80 /* UserService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -217,7 +238,8 @@
 		FFA6FFAE2AAF5B6000561FEE /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				FFBA03272AB21CE000D3D79C /* SearchView.swift */,
+				FF2CA85B2ABCE41D00356F80 /* View */,
+				FF2CA85C2ABCE42400356F80 /* ViewModel */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -376,6 +398,7 @@
 			files = (
 				FF2C37CF2AB070D400F2A110 /* FeedCell.swift in Sources */,
 				FFE8AC862AB6068500150282 /* UploadPostViewModel.swift in Sources */,
+				FF2CA85A2ABCE21500356F80 /* UserService.swift in Sources */,
 				FFA6FFB42AAF60C000561FEE /* ProfileView.swift in Sources */,
 				FFA1CE782AB3AFDB00BC02CA /* SelfProfileView.swift in Sources */,
 				FFE8AC842AB602CE00150282 /* UploadPostView.swift in Sources */,
@@ -395,6 +418,7 @@
 				FF6FC34D2AB378CE00C78F42 /* SignUpExtractedView.swift in Sources */,
 				FF6FC3492AB3703200C78F42 /* GrayTextFieldModifier.swift in Sources */,
 				FFA6FFB92AAF6AEB00561FEE /* UserStatView.swift in Sources */,
+				FF2CA85E2ABCE44A00356F80 /* SearchViewModel.swift in Sources */,
 				FF2C37CD2AB070C900F2A110 /* FeedView.swift in Sources */,
 				FF6FC3532AB3849200C78F42 /* CompleteSignUpView.swift in Sources */,
 				FFE8AC7E2AB4CF1200150282 /* Post.swift in Sources */,

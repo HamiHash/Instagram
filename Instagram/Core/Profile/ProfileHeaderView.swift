@@ -51,16 +51,22 @@ struct ProfileHeaderView: View {
             
             // action button
             Button {
-                
+                if user.isCurrentUser {
+                    print("Edit profile")
+                } else {
+                    print("Follow")
+                }
             } label: {
-                Text("Edit Profile")
+                Text(user.isCurrentUser ? "Edit Profile" : "Follow")
                     .font(.subheadline)
                     .fontWeight(.semibold)
-                    .foregroundColor(.black)
+                    .foregroundColor(user.isCurrentUser ? .black : .white)
                     .frame(width: 360, height:32)
+                    .background(user.isCurrentUser ? .white : .blue)
+                    .cornerRadius(6)
                     .overlay(
                         RoundedRectangle(cornerRadius: 6)
-                            .stroke(Color.gray, lineWidth: 1)
+                            .stroke(user.isCurrentUser ? .gray : .clear, lineWidth: 1)
                     )
             }
         }
@@ -69,6 +75,6 @@ struct ProfileHeaderView: View {
 
 struct ProfileHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileHeaderView(user: User.MOCK_USERS[2])
+        ProfileHeaderView(user: User.MOCK_USERS[1])
     }
 }
