@@ -16,7 +16,7 @@ struct User: Identifiable, Codable, Hashable {
     var email: String
     
     var isCurrentUser: Bool {
-        guard let currentId = Auth.auth().currentUser?.uid else { return false }
+        guard let currentId = Auth.auth().currentUser?.uid else { return true }
         return self.id == currentId
     }
 }

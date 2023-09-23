@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileHeaderView: View {
     
+    @State var editProfile: Bool = false
     let user: User
     
     var body: some View {
@@ -52,7 +53,7 @@ struct ProfileHeaderView: View {
             // action button
             Button {
                 if user.isCurrentUser {
-                    print("Edit profile")
+                    editProfile.toggle()
                 } else {
                     print("Follow")
                 }
@@ -70,11 +71,14 @@ struct ProfileHeaderView: View {
                     )
             }
         }
+        .fullScreenCover(isPresented: $editProfile) {
+            EditProfileView()
+        }
     }
 }
 
 struct ProfileHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileHeaderView(user: User.MOCK_USERS[1])
+        ProfileHeaderView(editProfile: false, user: User.MOCK_USERS[1])
     }
 }
