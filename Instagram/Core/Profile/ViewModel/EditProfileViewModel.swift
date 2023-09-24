@@ -23,7 +23,8 @@ class EditProfileViewModel: ObservableObject {
         }
     }
     @Published var profileImage: Image?
-    
+    private var uiImage: UIImage? /// this is to access the uiImage type from updateUserData.
+     
     init(user: User) {
         self.user = user
     }
@@ -31,6 +32,7 @@ class EditProfileViewModel: ObservableObject {
     func loadImage(fromItem item: PhotosPickerItem?) async {
         guard let data = try? await item?.loadTransferable(type: Data.self) else { return }
         guard let uiImage = UIImage(data: data) else { return }
+        self.uiImage = uiImage
         self.profileImage = Image(uiImage: uiImage)
     }
     
@@ -38,6 +40,11 @@ class EditProfileViewModel: ObservableObject {
         var data = [String: Any]() // creating a new data file to store values and push it to firebase
         
         // update profile if changed
+        if uiImage != nil {
+            let imageUrl = try await ImageUploader.uploadImage(image: uiImage!)
+            data["profileImageUrl"] = imageUrl
+        }
+        
         
         // update name if changed
         if !fullname.isEmpty && user.fullname != fullname {
