@@ -27,6 +27,11 @@ class EditProfileViewModel: ObservableObject {
      
     init(user: User) {
         self.user = user
+        
+        if let fullname = user.fullname, let bio = user.bio {
+            self.fullname = fullname
+            self.bio = bio
+        }
     }
     
     func loadImage(fromItem item: PhotosPickerItem?) async {
