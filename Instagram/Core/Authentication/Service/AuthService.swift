@@ -8,11 +8,9 @@
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
-import Firebase
 import FirebaseFirestoreSwift
 
 class AuthService {
-    
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
     
@@ -50,13 +48,9 @@ class AuthService {
         // setting the user session
         self.userSession = Auth.auth().currentUser
         // get the current user id (to access the document in the 'users' colection)
-        print("1. DEBUG: Before currentUid")
         guard let currentUid = userSession?.uid else { return }
-        // get document from Firebase
-        let snapshot = try await Firestore.firestore().collection("users").document(currentUid).getDocument()
-        print("2. DEBUG: Snapshot data is \(snapshot.data()!)")
-        // encoding the user data from Firebase, to a User model
-        currentUser = try? snapshot.data(as: User.self)
+        // get document from Firebase and encoding the user data from Firebase, to a User model
+        self.currentUser = try await UserService.fetchUser(withUid: currentUid)
     }
     
     func signout() {

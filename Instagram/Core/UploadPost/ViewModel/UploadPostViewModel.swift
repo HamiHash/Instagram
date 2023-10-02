@@ -7,7 +7,8 @@
 
 import SwiftUI
 import PhotosUI
-import Firebase
+import FirebaseFirestore
+import FirebaseAuth
 
 @MainActor
 class UploadPostViewModel: ObservableObject {

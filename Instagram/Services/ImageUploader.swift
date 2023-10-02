@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import FirebaseStorage
+import PhotosUI
 
 struct ImageUploader {
     static func uploadImage(image: UIImage) async throws -> String? {

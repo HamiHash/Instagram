@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct FeedCell: View {
     let post: Post
@@ -14,9 +15,9 @@ struct FeedCell: View {
         VStack(spacing: 4) {
             // pic and username
             HStack {
-                CircularProfileImageView(user: post.user!, size: .xSmall)
+                CircularProfileImageView(user: post.user, size: .xSmall)
                 
-                Text(post.user!.username)
+                Text(post.user?.username ?? "")
                     .font(.footnote)
                     .fontWeight(.semibold)
                 
@@ -25,7 +26,7 @@ struct FeedCell: View {
             .padding(.leading, 10)
             
             // post
-            Image(post.imageUrl)
+            KFImage(URL(string: post.imageUrl))
                 .resizable()
                 .scaledToFill()
             
@@ -61,7 +62,8 @@ struct FeedCell: View {
             
             // username and caption
             HStack {
-                Text("\(post.user!.username) ").fontWeight(.semibold) + Text("\(post.caption)")
+                Text("\(post.user?.username ?? "USERNAME NOT FOUND") ")
+                    .fontWeight(.semibold) + Text("\(post.caption)")
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .font(.footnote)

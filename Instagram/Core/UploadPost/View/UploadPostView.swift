@@ -35,8 +35,8 @@ struct UploadPostView: View {
                 Button {
                     Task {
                         try await viewModel.uploadPost(caption: caption)
+                        clearPostDataAndReturnToFeed()
                     }
-                    clearPostDataAndReturnToFeed()
                 } label: {
                     Text("Share")
                         .font(.subheadline)
