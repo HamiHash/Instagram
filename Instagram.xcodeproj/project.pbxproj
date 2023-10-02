@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF1F86A42ACB373D0091FC1C /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1F86A32ACB373D0091FC1C /* PostService.swift */; };
+		FF1F86A62ACB3D2C0091FC1C /* PostGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1F86A52ACB3D2C0091FC1C /* PostGridViewModel.swift */; };
 		FF2C37CD2AB070C900F2A110 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C37CC2AB070C900F2A110 /* FeedView.swift */; };
 		FF2C37CF2AB070D400F2A110 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C37CE2AB070D400F2A110 /* FeedCell.swift */; };
 		FF2CA85A2ABCE21500356F80 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CA8592ABCE21500356F80 /* UserService.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF1F86A32ACB373D0091FC1C /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		FF1F86A52ACB3D2C0091FC1C /* PostGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGridViewModel.swift; sourceTree = "<group>"; };
 		FF2C37CC2AB070C900F2A110 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		FF2C37CE2AB070D400F2A110 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		FF2CA8592ABCE21500356F80 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				FF96C3EB2ABE5A3600862F3C /* EditProfileViewModel.swift */,
+				FF1F86A52ACB3D2C0091FC1C /* PostGridViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -241,6 +246,7 @@
 			children = (
 				FF2CA8592ABCE21500356F80 /* UserService.swift */,
 				FF885FE02AC0E32000ABC17D /* ImageUploader.swift */,
+				FF1F86A32ACB373D0091FC1C /* PostService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -463,6 +469,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF1F86A62ACB3D2C0091FC1C /* PostGridViewModel.swift in Sources */,
 				FF2C37CF2AB070D400F2A110 /* FeedCell.swift in Sources */,
 				FFE8AC862AB6068500150282 /* UploadPostViewModel.swift in Sources */,
 				FF2CA85A2ABCE21500356F80 /* UserService.swift in Sources */,
@@ -488,6 +495,7 @@
 				FFADDF422AB6416C0030429B /* AuthService.swift in Sources */,
 				FF6FC34D2AB378CE00C78F42 /* SignUpExtractedView.swift in Sources */,
 				FF6FC3492AB3703200C78F42 /* GrayTextFieldModifier.swift in Sources */,
+				FF1F86A42ACB373D0091FC1C /* PostService.swift in Sources */,
 				FFA6FFB92AAF6AEB00561FEE /* UserStatView.swift in Sources */,
 				FF2CA85E2ABCE44A00356F80 /* SearchViewModel.swift in Sources */,
 				FF2C37CD2AB070C900F2A110 /* FeedView.swift in Sources */,
